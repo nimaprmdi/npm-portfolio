@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import state from "../state";
+import Nav from "./Nav";
+import Resume from "./Resume";
 
 const styles = {
     height: "30px",
@@ -16,8 +18,11 @@ const styles = {
 };
 
 const CameraButton = ({ pages, setPages, setIsAnimationLoaded, setisScreenLoading }) => {
+    const [currentView, setCurrentView] = useState("home");
+    const [isNavHidden, setIsNavHidden] = useState(false);
+
     const [cameraRig, setCameraRig] = useState({
-        intro: {
+        resume: {
             xPos: 0.867875319198645,
             yPos: 2.6799223330923048,
             zPos: -1.154328079443018,
@@ -35,7 +40,7 @@ const CameraButton = ({ pages, setPages, setIsAnimationLoaded, setisScreenLoadin
             zRot: 1.1050510999823102,
             fov: 75,
         },
-        performance: {
+        projects: {
             xPos: -0.09145389378951617,
             yPos: 0.9292195342538414,
             zPos: 0.2127644744439552,
@@ -83,10 +88,10 @@ const CameraButton = ({ pages, setPages, setIsAnimationLoaded, setisScreenLoadin
     });
 
     const sets = {
-        intro: {
-            cameraPos: [cameraRig.intro.xPos, cameraRig.intro.yPos, cameraRig.intro.zPos],
-            target: [cameraRig.intro.xRot, cameraRig.intro.yRot, cameraRig.intro.zRot],
-            cameraFov: cameraRig.intro.fov,
+        resume: {
+            cameraPos: [cameraRig.resume.xPos, cameraRig.resume.yPos, cameraRig.resume.zPos],
+            target: [cameraRig.resume.xRot, cameraRig.resume.yRot, cameraRig.resume.zRot],
+            cameraFov: cameraRig.resume.fov,
             name: "object005_bod_0",
         },
 
@@ -97,10 +102,10 @@ const CameraButton = ({ pages, setPages, setIsAnimationLoaded, setisScreenLoadin
             name: "object005_bod_0",
         },
 
-        performance: {
-            cameraPos: [cameraRig.performance.xPos, cameraRig.performance.yPos, cameraRig.performance.zPos],
-            target: [cameraRig.performance.xRot, cameraRig.performance.yRot, cameraRig.performance.zRot],
-            cameraFov: cameraRig.performance.fov,
+        projects: {
+            cameraPos: [cameraRig.projects.xPos, cameraRig.projects.yPos, cameraRig.projects.zPos],
+            target: [cameraRig.projects.xRot, cameraRig.projects.yRot, cameraRig.projects.zRot],
+            cameraFov: cameraRig.projects.fov,
             name: "object005_bod_0",
         },
 
@@ -151,90 +156,37 @@ const CameraButton = ({ pages, setPages, setIsAnimationLoaded, setisScreenLoadin
 
         setPages({ ...pages, selectedPage: animationName });
 
-        animationName !== "home" && setisScreenLoading(true);
+        animationName === "home" ? setisScreenLoading(false) : setisScreenLoading(true);
+
+        setCurrentView(animationName);
+
+        animationName !== "home" ? setIsNavHidden(true) : setIsNavHidden(false);
     };
 
     return (
         <React.Fragment>
-            {/* <button
-                onClick={() => handleClick("intro")}
-                style={{
-                    ...styles,
-                    left: "30vw",
-                }}
-            >
-                {"intro"}
-            </button> */}
-            {/* <button
-                onClick={() => handleClick("learnToUse")}
-                style={{
-                    ...styles,
-                    right: "30vw",
-                }}
-            >
-                {"learn to use"}
-            </button> */}
+            {currentView !== "home" && (
+                <div onClick={() => handleClick("home")} className={`c-close cursor-pointer opacity-0 absolute top-8 right-8 z-50 ${isNavHidden ? "has-fade-in" : "has-fade-out"}`}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="1em"
+                        height="1em"
+                        preserveAspectRatio="xMidYMid meet"
+                        viewBox="0 0 32 32"
+                        style={{ transform: "rotate(360deg)" }}
+                        className="c-close__icon w-24 h-24 text-red-600 hover:text-white ease-linear duration-150"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M16 2C8.2 2 2 8.2 2 16s6.2 14 14 14s14-6.2 14-14S23.8 2 16 2zm5.4 21L16 17.6L10.6 23L9 21.4l5.4-5.4L9 10.6L10.6 9l5.4 5.4L21.4 9l1.6 1.6l-5.4 5.4l5.4 5.4l-1.6 1.6z"
+                        />
+                    </svg>
+                </div>
+            )}
 
-            {/* <button
-                onClick={() => handleClick("portfolio")}
-                style={{
-                    ...styles,
-                    right: "43vw",
-                }}
-            >
-                {"portfolios"}
-            </button> */}
+            <Nav currentView={currentView} isNavHidden={isNavHidden} handleClick={handleClick} />
 
-            <button
-                onClick={() => handleClick("performance")}
-                style={{
-                    ...styles,
-                    right: "38vw",
-                }}
-            >
-                {"performance"}
-            </button>
-
-            <button
-                onClick={() => handleClick("about")}
-                style={{
-                    ...styles,
-                    right: "48vw",
-                }}
-            >
-                {"about"}
-            </button>
-
-            <button
-                onClick={() => handleClick("blog")}
-                style={{
-                    ...styles,
-                    right: "52vw",
-                }}
-            >
-                {"blog"}
-            </button>
-
-            <button
-                onClick={() => handleClick("home")}
-                style={{
-                    ...styles,
-                    left: "59.5vw",
-                    top: "10vh",
-                }}
-            >
-                {"Home"}
-            </button>
-
-            {/* <button
-                onClick={() => handleClick("blogSingle")}
-                style={{
-                    ...styles,
-                    right: "58vw",
-                }}
-            >
-                {"blog sigle"}
-            </button> */}
+            {currentView === "resume" && <Resume />}
         </React.Fragment>
     );
 };

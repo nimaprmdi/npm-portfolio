@@ -1,0 +1,23 @@
+/*------------------------------------*\
+  #Close 
+\*------------------------------------*/
+.c-close {
+    @include mq($until: wide) {
+        top: 0;
+        right: 16px;
+    }
+}
+.c-close__icon {
+    transition: none;
+
+    * {
+        transition: none;
+    }
+    @include mq($until: wide) {
+        width: 46px;
+    }
+
+    animation-name: closeBlink;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}

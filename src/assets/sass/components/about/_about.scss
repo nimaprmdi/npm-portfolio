@@ -1,0 +1,72 @@
+.c-about__context {
+    width: 978px;
+    max-width: 49%;
+    padding-left: 100px;
+}
+
+.c-about__desc {
+    line-height: 36px;
+    margin-top: 16px;
+}
+
+.c-about__social-item {
+    transition: 0.3s all;
+    &:hover {
+        background-color: $npm_main_secondary_accent;
+    }
+}
+
+.c-about__images {
+    max-width: 50%;
+    position: relative;
+}
+
+.c-about__rectangle-blue {
+    width: 502px;
+    height: 522px;
+    background-color: rgba(101, 116, 255, 0.4);
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-70%, -55%);
+    z-index: 10;
+}
+
+.c-about__rectangle-gray {
+    width: 501px;
+    height: 542px;
+    background-color: #333333;
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-60%, -30%);
+    z-index: 5;
+}
+
+.c-about__rectangle-aqua {
+    width: 311px;
+    height: 230px;
+    background-color: rgba(115, 230, 255, 0.65);
+    border-radius: 10px;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-10%, 50%);
+    z-index: 16;
+}
+
+.c-about__npm-mask {
+    width: 449px;
+    height: 647px;
+    border-radius: 10px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -55%);
+    z-index: 20;
+}

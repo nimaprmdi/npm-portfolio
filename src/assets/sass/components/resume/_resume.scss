@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  #Resume
+\*------------------------------------*/
+.c-resume__container {
+    @include mq($until: wide) {
+        margin-left: 16px;
+    }
+}
+
+.c-resume__title {
+    @include mq($until: wide) {
+        font-size: 4vw;
+        line-height: 90%;
+    }
+}
+
+.c-resume__desc {
+    @include mq($until: wide) {
+        font-size: 2.5vw;
+        max-width: 70%;
+    }
+}

@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// TOOLS
+@import "tools/tools";
+
+// ABSTRACTS
+@import "abstracts/abstracts";
+
+// BASE
+@import "base/base";
+
+// COMPONENTS
+@import "components/components";
+
+// COMPONENTS
+@import "objects/objects";
+
+// UTILS
+@import "utils/helpers";

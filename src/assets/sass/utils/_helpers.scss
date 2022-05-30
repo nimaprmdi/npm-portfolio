@@ -1,0 +1,20 @@
+/*------------------------------------*\
+  #Utils 
+\*------------------------------------*/
+.has-fade-out {
+    animation-name: fadeOut;
+    animation-duration: 0.5s;
+    animation-fill-mode: backwards;
+}
+
+.has-fade-in {
+    animation-name: fadeIn;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1.2s;
+}
+
+.c-firefox-container {
+    width: 1920px;
+    height: 950px;
+}

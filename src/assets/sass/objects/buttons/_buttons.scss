@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  #Buttons
+\*------------------------------------*/
+.o-btn,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    background-color: $npm_main_button_color;
+    border-radius: 5px;
+    color: $npm_main_white_color;
+    text-align: center;
+    transition: 0.3s all;
+    padding: 14px 20px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $npm_main_button_hover_color;
+        box-shadow: 0px 0px 7px $npm_main_button_hover_color;
+    }
+}

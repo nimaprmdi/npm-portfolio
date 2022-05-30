@@ -1,0 +1,72 @@
+/*------------------------------------*\
+  #Headings
+\*------------------------------------*/
+.text-massive {
+    font-weight: 400;
+    font-size: rem(120px);
+    line-height: rem(146px);
+}
+
+.text-huge {
+    font-weight: 400;
+    font-size: rem(96px);
+    line-height: rem(117px);
+}
+
+h1,
+.h1 {
+    font-weight: 400;
+    font-size: rem(64px);
+    line-height: rem(78px);
+}
+
+h2,
+.h2 {
+    font-weight: 400;
+    font-size: rem(40px);
+    line-height: rem(49px);
+}
+
+h3,
+.h3 {
+    font-weight: 400;
+    font-size: rem(32px);
+    line-height: rem(45px);
+}
+
+h4,
+.h4 {
+    font-weight: 400;
+    font-size: rem(24px);
+    line-height: rem(29px);
+}
+
+h5,
+.h5 {
+    font-weight: 400;
+    font-size: rem(16px);
+    line-height: rem(20px);
+}
+
+h6,
+.h6 {
+    font-weight: 400;
+    font-size: rem(14px);
+    line-height: rem(17px);
+}
+
+.text-tiny {
+    font-weight: 400;
+    font-size: rem(12px);
+    line-height: rem(15px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    word-break: break-all;
+    margin: 8px 0px;
+}

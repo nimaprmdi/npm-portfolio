@@ -1,0 +1,49 @@
+/*------------------------------------*\
+  #Nav 
+\*------------------------------------*/
+.c-nav {
+    z-index: 90000000;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.c-nav__item {
+    transition: 0.3s all;
+    cursor: pointer;
+
+    @include mq($until: wide) {
+        margin-bottom: 1%;
+        line-height: 189%;
+        font-size: 3.5vw;
+    }
+
+    &::before {
+        content: " ";
+        border-top: 9px solid #ffffff;
+        border-radius: 0px 10px 10px 0;
+        display: inline-block;
+        height: auto;
+        width: 200px;
+        margin-right: 16px;
+        transition: 0.3s all;
+
+        @include mq($until: wide) {
+            width: 17vw;
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: #3a66ff;
+        &::before {
+            border-top: 9px solid #3a66ff;
+        }
+    }
+}
+
+.c-nav__item.active {
+    &::before {
+        border-top: 9px solid #3a66ff;
+    }
+}

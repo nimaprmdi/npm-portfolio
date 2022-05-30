@@ -7,7 +7,7 @@ import { useLoader } from "react-three-fiber";
 import { useGLTF } from "@react-three/drei";
 
 const Laptop = ({ isScreenLoading }) => {
-    const { nodes } = useGLTF("/asus-rog-laptop/scene.gltf");
+    const { nodes } = useGLTF("/asus-rog-laptop/scene.glb");
 
     let currentScreen = "";
     isScreenLoading ? (currentScreen = "/assets/loading.jpg") : (currentScreen = "/assets/np.jpg");
@@ -22,7 +22,7 @@ const Laptop = ({ isScreenLoading }) => {
             {/* <Dragable> */}
             {/* <BoundingBox visible position={[4, 3, 0]} dims={[3, 2, 6]} offset={[0, -1, 0]}> */}
             <group position={[0, 0.05, 0]} rotation={[0, Math.PI, 0]}>
-                <Model path="/asus-rog-laptop/scene.gltf" scale={new Array(3).fill(5.5)} />
+                <Model path="/asus-rog-laptop/scene.glb" scale={new Array(3).fill(5.5)} />
             </group>
             {/* </BoundingBox> */}
             {/* </Dragable> */}

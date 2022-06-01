@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import About from "./About";
 
-const FireFoxPages = ({ pages, projectsData, setisScreenLoading }) => {
+const FireFoxPages = ({ pages, setisScreenLoading }) => {
     console.log(pages.selectedPage);
 
     const handleFireFoxComponents = () => {

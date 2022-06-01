@@ -1,4 +1,4 @@
-import React, { useState, Suspense, useEffect } from "react";
+import React, { useState, Suspense } from "react";
 import CameraButton from "./components/CameraButton";
 import CameraControls from "./components/CameraControls";
 import Floor from "./components/Floor";
@@ -11,14 +11,14 @@ import PointCircle from "./components/PointCircle";
 import { isMobile } from "react-device-detect";
 import { Canvas } from "react-three-fiber";
 import { Physics } from "@react-three/cannon";
-import { Loader } from "@react-three/drei";
+import { useProgress } from "@react-three/drei";
+import { Helmet } from "react-helmet-async";
 import "./index.css";
 import "./assets/sass/App.scss";
 import "react-dat-gui/build/react-dat-gui.css";
+import PreLoader from "./components/PreLoader";
 
 function App() {
-    const [projectsData, setProjectsData] = useState();
-
     const [pages, setPages] = useState({
         selectedPage: "",
         intro: "https://nimaprmdi.github.io/npm-screen/",
@@ -29,57 +29,82 @@ function App() {
         blog: "https://portfoliom.ir/blog/",
         blogSingle: "https://nimaprmdi.github.io/npm-screen/#/blog",
     });
-
     const [isAnimationLoaded, setIsAnimationLoaded] = useState(false);
-
     const [isScreenLoading, setisScreenLoading] = useState(false);
 
+    const [isLoading, setIsLoading] = useState(true);
+
+    function Loading() {
+        const { active, progress, errors, item, loaded, total } = useProgress();
+
+        return loaded > 0 && setIsLoading(false);
+    }
+
     return (
-        <div
-            gl={{
-                powerPreference: "high-performance",
-                antialias: false,
-                stencil: false,
-                depth: false,
-            }}
-            style={{ height: "100vh", width: "100vw" }}
-        >
-            <CameraButton setIsAnimationLoaded={setIsAnimationLoaded} setisScreenLoading={setisScreenLoading} pages={pages} setPages={setPages} />
-
-            <Canvas
-                dpr={isMobile ? window.devicePixelRatio / 2.5 : window.devicePixelRatio}
-                frameloop="demand"
-                onCreated={(state) => state.gl.setClearColor("#001140")}
-                camera={{ position: [0, 2, -30] }}
-                shadows
+        <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Nima PourMohamadi | Nimapm.com</title>
+                <link rel="canonical" href="https://nimaprmdi.github.io/npm-screen/" />
+                <meta name="description" content="Welcome to Nima PourMohamadi 's Personal Website." />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#242424" />
+                <meta name="msapplication-TileColor" content="#000000" />
+                <meta name="theme-color" content="#000000"></meta>
+            </Helmet>
+            <div
+                gl={{
+                    powerPreference: "high-performance",
+                    antialias: false,
+                    stencil: false,
+                    depth: false,
+                }}
+                style={{ height: "100vh", width: "100vw" }}
             >
-                <WebPage projectsData={projectsData} setisScreenLoading={setisScreenLoading} isAnimationLoaded={isAnimationLoaded} pages={pages} />
+                <PreLoader isLoading={isLoading} />
 
-                <CameraControls setIsAnimationLoaded={setIsAnimationLoaded} />
+                <CameraButton setIsAnimationLoaded={setIsAnimationLoaded} setisScreenLoading={setisScreenLoading} pages={pages} setPages={setPages} />
+                <Canvas
+                    dpr={isMobile ? window.devicePixelRatio / 3 : window.devicePixelRatio}
+                    frameloop="demand"
+                    onCreated={(state) => state.gl.setClearColor("#001140")}
+                    camera={{ position: [0, 2, -30] }}
+                    shadows
+                    className="webgl"
+                >
+                    <WebPage setisScreenLoading={setisScreenLoading} isAnimationLoaded={isAnimationLoaded} pages={pages} />
 
-                <fog attach="fog" args={["white", 0.5, 20]} color="#001140" />
+                    <CameraControls setIsAnimationLoaded={setIsAnimationLoaded} />
 
-                <Orbit />
+                    <fog attach="fog" args={["white", 0.5, 20]} color="#001140" />
 
-                <ChangeOrbitOptions />
+                    <Orbit />
 
-                <Lights />
+                    <ChangeOrbitOptions />
 
-                <ambientLight intensity={0.2} />
+                    <Lights />
 
-                <Physics>
-                    <Suspense fallback={null}>
-                        <Laptop isScreenLoading={isScreenLoading} />
-                    </Suspense>
+                    <ambientLight intensity={0.2} />
 
-                    <PointCircle />
+                    <Physics>
+                        <Suspense fallback={<Loading />}>
+                            <Laptop isScreenLoading={isScreenLoading} />
+                        </Suspense>
 
-                    <Floor position={[0, -0.5, 0]} />
-                </Physics>
-            </Canvas>
+                        <Suspense fallback={<Loading />}>
+                            <PointCircle />
+                        </Suspense>
 
-            <Loader />
-        </div>
+                        <Suspense fallback={<Loading />}>
+                            <Floor position={[0, -0.5, 0]} />
+                        </Suspense>
+                    </Physics>
+                </Canvas>
+            </div>
+        </>
     );
 }
 

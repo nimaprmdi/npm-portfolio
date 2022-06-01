@@ -1,0 +1,5 @@
+.webgl {
+    @include mq($and: "(orientation: portrait)") {
+        display: none;
+    }
+}

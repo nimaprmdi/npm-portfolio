@@ -4,7 +4,7 @@ import FireFoxPages from "./firefox/FireFoxPages";
 import { browserName } from "react-device-detect";
 import { Html, useGLTF } from "@react-three/drei";
 
-const WebPage = ({ pages, isAnimationLoaded, setisScreenLoading, projectsData }) => {
+const WebPage = ({ pages, isAnimationLoaded, setisScreenLoading }) => {
     const { nodes } = useGLTF("/asus-rog-laptop/scene.glb");
     const geoScale = new THREE.Vector3(8, 8, 8);
     const currentPage = pages.selectedPage;
@@ -31,7 +31,7 @@ const WebPage = ({ pages, isAnimationLoaded, setisScreenLoading, projectsData })
                     pointerEvents="auto"
                 >
                     {browserName === "Firefox" ? (
-                        <FireFoxPages setisScreenLoading={setisScreenLoading} projectsData={projectsData} pages={pages} />
+                        <FireFoxPages setisScreenLoading={setisScreenLoading} pages={pages} />
                     ) : (
                         <iframe
                             onLoad={() => handleLoad()}

@@ -23,11 +23,11 @@ function App() {
         selectedPage: "",
         intro: "https://nimaprmdi.github.io/npm-screen/",
         learnToUse: "https://nimaprmdi.github.io/npm-screen/",
-        projects: "https://portfoliom.ir/projects/",
-        portfolio: "https://portfoliom.ir/projects/",
+        projects: "https://nimapm.com/projects/",
+        portfolio: "https://nimapm.com/projects/",
         about: "https://nimaprmdi.github.io/npm-screen/#/about",
-        blog: "https://portfoliom.ir/blog/",
-        blogSingle: "https://portfoliom.ir/blog/",
+        blog: "https://nimapm.com/blog/",
+        blogSingle: "https://nimapm.com/blog/",
     });
     const [isAnimationLoaded, setIsAnimationLoaded] = useState(false);
     const [isScreenLoading, setisScreenLoading] = useState(false);
@@ -65,7 +65,12 @@ function App() {
             >
                 <PreLoader isLoading={isLoading} />
 
-                <CameraButton setIsAnimationLoaded={setIsAnimationLoaded} setisScreenLoading={setisScreenLoading} pages={pages} setPages={setPages} />
+                <CameraButton
+                    setIsAnimationLoaded={setIsAnimationLoaded}
+                    setisScreenLoading={setisScreenLoading}
+                    pages={pages}
+                    setPages={setPages}
+                />
                 <Canvas
                     dpr={isMobile ? window.devicePixelRatio / 3 : window.devicePixelRatio}
                     frameloop="demand"
@@ -74,7 +79,11 @@ function App() {
                     shadows
                     className="webgl"
                 >
-                    <WebPage setisScreenLoading={setisScreenLoading} isAnimationLoaded={isAnimationLoaded} pages={pages} />
+                    <WebPage
+                        setisScreenLoading={setisScreenLoading}
+                        isAnimationLoaded={isAnimationLoaded}
+                        pages={pages}
+                    />
 
                     <CameraControls setIsAnimationLoaded={setIsAnimationLoaded} />
 

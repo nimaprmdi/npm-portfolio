@@ -21,8 +21,6 @@ const CameraControls = ({ setIsAnimationLoaded }) => {
                 setTimeout(() => {
                     setIsAnimationLoaded(true);
                 }, 210);
-
-                console.log("Animation Ended");
             }
         }
     });

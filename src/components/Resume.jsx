@@ -1,7 +1,7 @@
 import React from "react";
 
 const Resume = ({}) => {
-    const resumeAddress = "https://portfoliom.ir/cv/nima-resume-2020-6.pdf";
+    const resumeAddress = "https://nimapm.com/nima-pourmohamadi-front-end-Resume.pdf";
 
     return (
         <div className="opacity-0 c-resume w-full h-screen absolute top-0 left-0 z-10 flex items-center flex-wrap has-fade-in">

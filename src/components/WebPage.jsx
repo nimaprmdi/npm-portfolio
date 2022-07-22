@@ -5,7 +5,7 @@ import { browserName } from "react-device-detect";
 import { Html, useGLTF } from "@react-three/drei";
 
 const WebPage = ({ pages, isAnimationLoaded, setisScreenLoading }) => {
-    const { nodes } = useGLTF("/asus-rog-laptop/scene.glb");
+    const { nodes } = useGLTF(process.env.PUBLIC_URL + "/asus-rog-laptop/scene.glb");
     const geoScale = new THREE.Vector3(8, 8, 8);
     const currentPage = pages.selectedPage;
 
@@ -14,7 +14,12 @@ const WebPage = ({ pages, isAnimationLoaded, setisScreenLoading }) => {
     };
 
     return (
-        <mesh rotation={[1.928, 0.0, 3.135]} position={[0.0, -0.13, 1.07]} geometry={nodes["Object_54"].geometry} scale={geoScale}>
+        <mesh
+            rotation={[1.928, 0.0, 3.135]}
+            position={[0.0, -0.13, 1.07]}
+            geometry={nodes["Object_54"].geometry}
+            scale={geoScale}
+        >
             {isAnimationLoaded && (
                 <Html
                     as="section"

@@ -7,7 +7,7 @@ import { useLoader } from "react-three-fiber";
 import { useGLTF } from "@react-three/drei";
 
 const Laptop = ({ isScreenLoading }) => {
-    const { nodes } = useGLTF("/asus-rog-laptop/scene.glb");
+    const { nodes } = useGLTF(process.env.PUBLIC_URL + "/asus-rog-laptop/scene.glb");
 
     let currentScreen = "";
     isScreenLoading ? (currentScreen = "/assets/loading.jpg") : (currentScreen = "/assets/np.jpg");

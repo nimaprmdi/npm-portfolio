@@ -23,11 +23,11 @@ function App() {
         selectedPage: "",
         intro: "https://nimaprmdi.github.io/npm-screen/",
         learnToUse: "https://nimaprmdi.github.io/npm-screen/",
-        projects: "https://nimapm.com/projects/",
-        portfolio: "https://nimapm.com/projects/",
+        projects: "https://nimapourmohammadi.com/projects/",
+        portfolio: "https://nimapourmohammadi.com/projects/",
         about: "https://nimaprmdi.github.io/npm-screen/#/about",
-        blog: "https://nimapm.com/blog/",
-        blogSingle: "https://nimapm.com/blog/",
+        blog: "https://nimapourmohammadi.com/blog/",
+        blogSingle: "https://nimapourmohammadi.com/blog/",
     });
     const [isAnimationLoaded, setIsAnimationLoaded] = useState(false);
     const [isScreenLoading, setisScreenLoading] = useState(false);
